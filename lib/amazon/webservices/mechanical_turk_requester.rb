@@ -91,8 +91,13 @@ class MechanicalTurkRequester < Amazon::WebServices::Util::ConvenienceWrapper
   def initialize(args={})
     newargs = args.dup
     unless args[:Config].nil?
-      loaded = Amazon::Util::DataReader.load( args[:Config], :YAML )
-      newargs = args.merge loaded.inject({}) {|a,b| a[b[0].to_sym] = b[1] ; a }
+      if args[:Config] == :Rails
+        rails_config = Amazon::Util::DataReader.load( File.join(::RAILS_ROOT,'config','mturk.yml'), :YAML )
+        newargs = args.merge rails_config[::RAILS_ENV].inject({})  {|a,b| a[b[0].to_sym] = b[1] ; a }
+      else
+        loaded = Amazon::Util::DataReader.load( args[:Config], :YAML )
+        newargs = args.merge loaded.inject({}) {|a,b| a[b[0].to_sym] = b[1] ; a }
+      end
     end
     @threadcount = args[:ThreadCount].to_i
     @threadcount = DEFAULT_THREADCOUNT unless @threadcount >= 1
