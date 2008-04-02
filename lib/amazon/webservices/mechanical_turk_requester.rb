@@ -126,8 +126,8 @@ class MechanicalTurkRequester < Amazon::WebServices::Util::ConvenienceWrapper
       tp.addWork(hd) do |hit_data|
         begin
           b = Amazon::Util::Binder.new( hit_data )
-          annotation = b.erb_eval( annotation_template )
-          numassignments = b.erb_eval( numassignments_template.to_s ).to_i
+          annotation = annotation_template.nil? ? nil : b.erb_eval( annotation_template )
+          numassignments = numassignments_template.nil? ? nil : b.erb_eval( numassignments_template.to_s ).to_i
           question = b.erb_eval( question_template )
           result = self.createHIT( :HITTypeId => ht,
                                    :LifetimeInSeconds => lifetime,
