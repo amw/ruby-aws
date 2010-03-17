@@ -25,13 +25,13 @@ class XMLSimplifier
         value = case str
         when /^(\d+)-(\d+)-(\d+)T(\d+):(\d+):(\d+)Z$/
           Time.gm($1,$2,$3,$4,$5,$6)
-        when /^\d+$/
+        when /^-?\d+$/
           if str.to_i.to_s == str
             str.to_i
           else
             str
           end
-        when /^\d+\.\d+$/
+        when /^-?\d+\.\d+$/
           str.to_f
         else
           str
