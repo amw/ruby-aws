@@ -13,7 +13,7 @@ module WebServices
 
 class MechanicalTurkRequester < Amazon::WebServices::Util::ConvenienceWrapper
 
-  WSDL_VERSION = "2007-06-21"
+  WSDL_VERSION = "2011-10-01"
 
   ABANDONMENT_RATE_QUALIFICATION_TYPE_ID = "00000000000000000070";
   APPROVAL_RATE_QUALIFICATION_TYPE_ID = "000000000000000000L0";
@@ -48,6 +48,7 @@ class MechanicalTurkRequester < Amazon::WebServices::Util::ConvenienceWrapper
   serviceCall :GetAssignmentsForHIT, :GetAssignmentsForHITResult
   serviceCall :ApproveAssignment, :ApproveAssignmentResult
   serviceCall :RejectAssignment, :RejectAssignmentResult
+  serviceCall :GetReviewResultsForHIT, :GetReviewResultsForHITResult
 
   paginate :SearchHITs, :HIT
   paginate :GetReviewableHITs, :HIT
@@ -62,6 +63,7 @@ class MechanicalTurkRequester < Amazon::WebServices::Util::ConvenienceWrapper
   serviceCall :UpdateQualificationType, :QualificationType
   serviceCall :GetQualificationsForQualificationType, :GetQualificationsForQualificationTypeResult, { :Status => 'Granted' }
   serviceCall :GetHITsForQualificationType, :GetHITsForQualificationTypeResult
+  serviceCall :DisposeQualficationType, :DisposeQualificationTypeResult
 
   paginate :SearchQualificationTypes, :QualificationType
   paginate :GetQualificationsForQualificationType, :Qualification
@@ -77,14 +79,13 @@ class MechanicalTurkRequester < Amazon::WebServices::Util::ConvenienceWrapper
   paginate :GetQualificationRequests, :QualificationRequest
 
   serviceCall :SetHITTypeNotification, :SetHITTypeNotificationResult
-  serviceCall :SetWorkerAcceptLimit, :SetWorkerAcceptLimitResult
-  serviceCall :GetWorkerAcceptLimit, :GetWorkerAcceptLimitResult
   serviceCall :BlockWorker, :BlockWorkerResult
   serviceCall :UnblockWorker, :BlockWorkerResult
 
   serviceCall :GetFileUploadURL, :GetFileUploadURLResult
   serviceCall :GetAccountBalance, :GetAccountBalanceResult
   serviceCall :GetRequesterStatistic, :GetStatisticResult, { :Count => 1 }
+  serviceCall :GetRequesterWorkerStatistic, :GetStatisticResult, { :Count => 1 }
 
   serviceCall :NotifyWorkers, :NotifyWorkersResult
 

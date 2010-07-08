@@ -18,7 +18,8 @@ Before getting started, you should first review the getting started and develope
 7. Running the Best Image Sample Application
 8. Running the Web Site Categorization Sample Application
 9. Running the Reviewer Sample Application
-10. Comments, Questions, or Feedback
+10. Running the Review Policy Sample Application
+11. Comments, Questions, or Feedback
 
 == Features and Benefits
 
@@ -163,6 +164,27 @@ Run the following command:
     ruby Reviewer.rb --results --input [full path to hits.success file created in site_category sample] --output output.txt
     
 You have successfully retrieved the results of your HITs that you loaded in bulk.
+
+== Running the Review Policy Sample Application
+
+With this sample application, you create a hit with review policies to approve and reject your HITs automatically
+
+The following concepts are covered:
+  * Creating a HIT with review policies
+  * Retrieving Review Policy results
+
+To run this sample, navigate to the following directory:
+  /samples/review_policy
+
+And run the following command to create a HIT:
+  ruby ReviewPolicy.rb
+
+This will create a new HIT with review policies attached.
+
+Next, run the following command to retrieve review policy results:
+  ruby ReviewPolicy.rb <HITId>
+
+This command will retrieve and display all hit policy actions and results available for the provided HITId.
 
 == Regenerating the Gem package
 The distributable contains a Rakefile to allow a Gem to be regenerated.  
