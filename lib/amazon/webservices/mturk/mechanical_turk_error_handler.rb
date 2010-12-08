@@ -87,6 +87,10 @@ class MechanicalTurkErrorHandler
         return :Unknown
       end
     when 'Amazon::WebServices::Util::ValidationException'
+      case error.message
+      when 'AWS.ServiceUnavailable'
+        return :RetryWithBackoff if methodRetryable( method )
+      end
       return :Fail
     when 'RuntimeError'
       case error.message
