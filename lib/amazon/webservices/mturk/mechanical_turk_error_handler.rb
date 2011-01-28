@@ -121,14 +121,24 @@ class MechanicalTurkErrorHandler
 
   def validateResponse(response)
     log "Validating response: #{response.inspect}"
-    raise 'Throttled' if response[:Errors] and response[:Errors][:Error] and response[:Errors][:Error][:Code] == "ServiceUnavailable"
-    raise Util::ValidationException.new(response) unless response[:OperationRequest][:Errors].nil?
+    if response[:Errors] and response[:Errors][:Error]
+      if response[:Errors][:Error][:Code] == "ServiceUnavailable"
+        raise 'Throttled'
+      else
+        raise Util::ValidationException.new(response)
+      end
+    end
+    if response[:OperationRequest] and response[:OperationRequest][:Errors]
+      raise Util::ValidationException.new(response)
+    end
     resultTags = response.keys.find_all {|r| isResultTag( r ) }
     raise Util::ValidationException.new(response, "Didn't get back an acceptable result tag (got back #{response.keys.join(',')})") if resultTags.empty?
     resultTags.each do |resultTag|
       log "using result tag <#{resultTag}>"
       result = response[resultTag]
-      raise Util::ValidationException.new(response) unless result[:Request][:Errors].nil?
+      if result[:Request] and result[:Request][:Errors]
+        raise Util::ValidationException.new(result)
+      end
     end
     response
   end
