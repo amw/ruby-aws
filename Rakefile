@@ -9,6 +9,7 @@ Hoe.spec 'ruby-aws' do
   self.rubyforge_name = 'ruby-aws'
   developer 'David J Parrott', 'valthon@nothlav.net'
   extra_deps << ['highline','>= 1.2.7']
+  extra_deps << ['nokogiri','>= 1.4']
   need_tar
   need_zip
 

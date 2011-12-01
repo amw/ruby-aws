@@ -12,12 +12,12 @@ class XMLSimplifier
   # simplify(xml) -- convert an xml document into a simple nested hash
   def self.simplify(xml)
     case xml.class.to_s
-    when 'REXML::Text'
+    when /Text/
       {}
-    when 'REXML::Document'
+    when /Document/
       xml.root.children.inject({}) {|data,child| self.merge( data, simplify(child) ) }
-    when 'REXML::Element'
-      if xml.children.size > 1 || xml.text.nil?
+    when /Element/
+      if xml.children.size > 1 || xml.children.first.class.to_s !~ /Text/
         value = xml.children.inject({}) { |data,child| self.merge( data, simplify(child) ) }
         { xml.name.to_sym => value }
       else
@@ -25,13 +25,13 @@ class XMLSimplifier
         value = case str
         when /^(\d+)-(\d+)-(\d+)T(\d+):(\d+):(\d+)Z$/
           Time.gm($1,$2,$3,$4,$5,$6)
-        when /^\d+$/
+        when /^-?\d+$/
           if str.to_i.to_s == str
             str.to_i
           else
             str
           end
-        when /^\d+\.\d+$/
+        when /^-?\d+\.\d+$/
           str.to_f
         else
           str

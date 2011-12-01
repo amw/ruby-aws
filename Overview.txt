@@ -5,7 +5,7 @@ Libraries for Amazon Web Services (ruby-aws) is a set of libraries and tools des
 * To simplify using the various Amazon Mechanical Turk APIs
 * To allow you to focus more on solving the business problem and less on managing technical details
 
-Before getting started, you should first review the getting started and developer guides for the Amazon Mechanical Turk web service APIs at http://developer.amazonwebservices.com/connect/entry.jspa?externalID=671&categoryID=28.  They provide excellent background information on the various concepts of Amazon Mechanical Turk.
+Before getting started, you should first review the getting started and developer guides for the Amazon Mechanical Turk web service APIs at http://aws.amazon.com/documentation/mturk/. They provide excellent background information on the various concepts of Amazon Mechanical Turk.
 
 == Table of Contents
 

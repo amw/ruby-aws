@@ -3,7 +3,8 @@
 
 require 'cgi'
 require 'net/https'
-require 'rexml/document'
+require 'rubygems'
+require 'nokogiri'
 require 'amazon/webservices/util/xml_simplifier'
 
 module Amazon
@@ -75,7 +76,7 @@ class RESTTransport
       conn.request(req)
     }.body
 
-    xml = REXML::Document.new( res )
+    xml = Nokogiri::XML( res )
     XMLSimplifier.simplify xml
   end
 

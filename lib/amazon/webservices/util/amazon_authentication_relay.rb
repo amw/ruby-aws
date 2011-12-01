@@ -41,6 +41,14 @@ class AmazonAuthenticationRelay
     @transport.send( method, args )
   end
 
+  def to_s
+    "AmazonAuthenticationRelay[name:#{@name} transport:#{@transport}]>"
+  end
+
+  def inspect
+    "#<Amazon::WebServices::Util::AmazonAuthenticationRelay:#{object_id} name:#{@name} transport:#{@transport.inspect}>"
+  end
+
   private
 
   def findAuthInfo( args )

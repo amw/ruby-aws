@@ -57,7 +57,9 @@ EOF
 
     @store.set(:Auth,:AccessKeyId,id)
     @store.set(:Auth,:SecretAccessKey,key)
-    @store.save
+
+    should_save = @h.agree( 'Would you like to save your authentication information?' )
+    @store.save if should_save
   rescue
     raise "Unable to retrieve authentication information from the Console"
   end

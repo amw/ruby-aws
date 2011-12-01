@@ -1,3 +1,18 @@
+== 1.4.0 / 2011-12-01
+
+=== 2 major enhancements
+* Update MechanicalTurk WSDL version to 2011-10-01 (getReviewResultsForHIT, disposeQualificationType, getRequesterWorkerStatistic)
+* Add Review Policy Sample Application
+
+=== 7 minor enhancements
+* Switch from REXML to Nokogiri
+* Add Rails configuration option
+* Make MechanicalTurkErrorHandler more robust
+* ErrorHandler will retry on AWS.ServiceUnavailable
+* Fix XmlSimplifier to support negative numbers
+* Improve robustness of MechanicalTurkRequester#createHITs
+* Confirm before saving authentication information
+
 == 1.3.1 / 2011-05-05
 
 === 2 major enhancements
