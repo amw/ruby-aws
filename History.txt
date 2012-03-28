@@ -1,3 +1,11 @@
+== 1.5.0 / 2012-03-28
+
+=== 1 major enhancement
+* Update MechanicalTurk WSDL version to 2012-03-25 (getBlockedWorkers, getAssignment, approveRejectedAssignment)
+
+=== 1 minor enhancements
+* Address unused variable warnings
+
 == 1.4.0 / 2011-12-01
 
 === 2 major enhancements
