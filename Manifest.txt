@@ -43,6 +43,8 @@ samples/mturk/blank_slate/BlankSlate.rb
 samples/mturk/blank_slate/BlankSlate_multithreaded.rb
 samples/mturk/helloworld/MTurkHelloWorld.rb
 samples/mturk/helloworld/mturk.yml
+samples/mturk/review_policy/ReviewPolicy.rb
+samples/mturk/review_policy/review_policy.question
 samples/mturk/reviewer/Reviewer.rb
 samples/mturk/reviewer/mturk.yml
 samples/mturk/simple_survey/SimpleSurvey.rb
