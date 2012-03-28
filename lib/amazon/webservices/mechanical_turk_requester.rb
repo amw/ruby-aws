@@ -13,7 +13,7 @@ module WebServices
 
 class MechanicalTurkRequester < Amazon::WebServices::Util::ConvenienceWrapper
 
-  WSDL_VERSION = "2011-10-01"
+  WSDL_VERSION = "2012-03-25"
 
   ABANDONMENT_RATE_QUALIFICATION_TYPE_ID = "00000000000000000070";
   APPROVAL_RATE_QUALIFICATION_TYPE_ID = "000000000000000000L0";
@@ -28,6 +28,8 @@ class MechanicalTurkRequester < Amazon::WebServices::Util::ConvenienceWrapper
                                                           :AssignmentDurationInSeconds => 60*60,
                                                           :AutoApprovalDelayInSeconds => 60*60*24*7
                                                         }
+  serviceCall :SetHITTypeNotification, :SetHITTypeNotificationResult
+
 
   serviceCall :CreateHIT, :HIT, { :MaxAssignments => 1,
                                   :AssignmentDurationInSeconds => 60*60,
@@ -46,13 +48,16 @@ class MechanicalTurkRequester < Amazon::WebServices::Util::ConvenienceWrapper
   serviceCall :GetReviewableHITs, :GetReviewableHITsResult
   serviceCall :SetHITAsReviewing, :SetHITAsReviewingResult
   serviceCall :GetAssignmentsForHIT, :GetAssignmentsForHITResult
-  serviceCall :ApproveAssignment, :ApproveAssignmentResult
-  serviceCall :RejectAssignment, :RejectAssignmentResult
   serviceCall :GetReviewResultsForHIT, :GetReviewResultsForHITResult
 
   paginate :SearchHITs, :HIT
   paginate :GetReviewableHITs, :HIT
   paginate :GetAssignmentsForHIT, :Assignment
+
+  serviceCall :GetAssignment, :GetAssignmentResult
+  serviceCall :ApproveAssignment, :ApproveAssignmentResult
+  serviceCall :RejectAssignment, :RejectAssignmentResult
+  serviceCall :ApproveRejectedAssignment, :ApproveRejectedAssignmentResult
 
   serviceCall :GrantBonus, :GrantBonusResult
   serviceCall :GetBonusPayments, :GetBonusPaymentsResult
@@ -78,9 +83,11 @@ class MechanicalTurkRequester < Amazon::WebServices::Util::ConvenienceWrapper
 
   paginate :GetQualificationRequests, :QualificationRequest
 
-  serviceCall :SetHITTypeNotification, :SetHITTypeNotificationResult
+  serviceCall :GetBlockedWorkers, :GetBlockedWorkersResult
   serviceCall :BlockWorker, :BlockWorkerResult
-  serviceCall :UnblockWorker, :BlockWorkerResult
+  serviceCall :UnblockWorker, :UnblockWorkerResult
+
+  paginate :GetBlockedWorkers, :WorkerBlock
 
   serviceCall :GetFileUploadURL, :GetFileUploadURLResult
   serviceCall :GetAccountBalance, :GetAccountBalanceResult
