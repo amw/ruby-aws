@@ -39,7 +39,7 @@ class TestChangeHITTypeOfHIT < Test::Unit::TestCase
       end
     end
 
-    hit = @@mockturk.updateHIT( 'mockHIT', { :Title => 'new title' } )
+    @@mockturk.updateHIT( 'mockHIT', { :Title => 'new title' } )
     assert_equal :GetHIT, @@mock.next.name
 
     ht = @@mock.next

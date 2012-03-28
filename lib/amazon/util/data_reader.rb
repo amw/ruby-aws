@@ -79,7 +79,6 @@ class DataReader
   private
   
   def parse_csv( raw_data, delim=nil )
-    processed = []
     rows = nil
     if CSV.const_defined? :Reader
       rows = CSV.parse( raw_data, delim )

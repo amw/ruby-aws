@@ -41,7 +41,7 @@ class TestErrorHandler < Test::Unit::TestCase
     begin
       @mturk.grantBonus
       fail "Should have thrown an exception"
-    rescue Timeout::Error => e
+    rescue Timeout::Error
       # expect this exception
     end
     assert_equal true, toggle
@@ -59,7 +59,7 @@ class TestErrorHandler < Test::Unit::TestCase
     begin
       @mturk.searchHITs
       fail "Should have thrown an exception"
-    rescue Timeout::Error => e
+    rescue Timeout::Error
       # expect this exception
     end
 

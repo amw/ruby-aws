@@ -44,8 +44,14 @@ class TestHashNesting < Test::Unit::TestCase
 
     unnest = @unnested.unnest
     assert_equal cpy, @unnested
+    assert_not_nil unnest
+    unnest[:q] = 'p'
+    assert_equal cpy, @unnested
 
     nest = @unnested.nest
+    assert_equal cpy, @unnested
+    assert_not_nil nest
+    nest['q'] = 'p'
     assert_equal cpy, @unnested
 
     @unnested.nest!

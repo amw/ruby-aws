@@ -6,7 +6,7 @@ begin
  require 'soap/wsdlDriver'
  require 'amazon/webservices/util/soap_simplifier'
  require 'amazon/webservices/util/soap_transport_header_handler'
-rescue Exception => e
+rescue Exception
   can_load_soap4r = false
   module Amazon ; module WebServices ; module Util
   class SOAPTransport

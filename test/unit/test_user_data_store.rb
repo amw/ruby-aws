@@ -28,7 +28,7 @@ class TestUserDataStore < Test::Unit::TestCase
     store.save
 
     store2 = UserDataStore.new('TEST_MTURK')
-    color = store.get :pudding, :color
+    color = store2.get :pudding, :color
 
     assert_equal 'yellow', color, 'pudding was the wrong color'
   end
@@ -49,8 +49,8 @@ class TestUserDataStore < Test::Unit::TestCase
     store.save
 
     store2 = UserDataStore.new('TEST_MTURK')
-    assert_nil store.get(:pudding,:color)
-    assert_nil store.get(:pudding,:smell)
+    assert_nil store2.get(:pudding,:color)
+    assert_nil store2.get(:pudding,:smell)
   end
 
   def testClearPartial
@@ -63,7 +63,7 @@ class TestUserDataStore < Test::Unit::TestCase
     store.save
 
     store2 = UserDataStore.new('TEST_MTURK')
-    assert_equal 'pink', store.get(:pudding,:color)
+    assert_equal 'pink', store2.get(:pudding,:color)
     assert_nil store.get(:pudding,:smell)
   end
 

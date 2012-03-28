@@ -26,6 +26,7 @@ class TestQuestionGenerator < Test::Unit::TestCase
     require 'rexml/document'
     # REXML will throw an exception if the xml is invalid / malformatted
     valid = REXML::Document.new(xml) 
+    assert_not_nil valid
   end
 
   def testAlternateInvocations
