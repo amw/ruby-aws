@@ -2,7 +2,6 @@
 # License::   Apache License, Version 2.0
 
 require 'ruby-aws/version'
-require 'amazon/webservices/mechanical_turk_requester'
 
 module RubyAWS
 
@@ -16,3 +15,5 @@ module RubyAWS
   end
 
 end
+
+require 'amazon/webservices/mechanical_turk_requester'

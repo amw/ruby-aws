@@ -19,6 +19,8 @@ end
 
 if can_load_soap4r
 
+require 'ruby-aws'
+
 module Amazon
 module WebServices
 module Util
