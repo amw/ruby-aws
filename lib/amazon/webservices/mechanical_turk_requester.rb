@@ -99,7 +99,14 @@ class MechanicalTurkRequester < Amazon::WebServices::Util::ConvenienceWrapper
   def initialize(args={})
     newargs = args.dup
     unless args[:Config].nil?
-      if args[:Config] == :Rails
+      if args[:Config] == :aws_sdk
+        aws_config = Amazon::Util::DataReader.load \
+          ::Rails.root.join('config','aws.yml'), :YAML
+        aws_config = aws_config[Rails.env.to_s]
+        newargs = args.merge \
+          AWSAccessKeyId: aws_config['access_key_id'],
+          AWSAccessKey: aws_config['secret_access_key']
+      elsif args[:Config] == :Rails
         rails_config = Amazon::Util::DataReader.load \
           ::Rails.root.join('config','mturk.yml'), :YAML
         newargs = args.merge rails_config[Rails.env.to_s].inject({}) {|a,b|
