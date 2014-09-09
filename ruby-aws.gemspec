@@ -24,24 +24,10 @@ Gem::Specification.new do |s|
   s.rubygems_version = "1.8.23"
   s.summary = "Ruby libraries for working with Amazon Web Services ( Mechanical Turk )"
 
-  if s.respond_to? :specification_version then
-    s.specification_version = 3
+  s.specification_version = 3
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<highline>, [">= 1.2.7"])
-      s.add_runtime_dependency(%q<nokogiri>, [">= 1.4"])
-      s.add_development_dependency(%q<rdoc>, ["~> 3.10"])
-      s.add_development_dependency(%q<hoe>, ["~> 2.13"])
-    else
-      s.add_dependency(%q<highline>, [">= 1.2.7"])
-      s.add_dependency(%q<nokogiri>, [">= 1.4"])
-      s.add_dependency(%q<rdoc>, ["~> 3.10"])
-      s.add_dependency(%q<hoe>, ["~> 2.13"])
-    end
-  else
-    s.add_dependency(%q<highline>, [">= 1.2.7"])
-    s.add_dependency(%q<nokogiri>, [">= 1.4"])
-    s.add_dependency(%q<rdoc>, ["~> 3.10"])
-    s.add_dependency(%q<hoe>, ["~> 2.13"])
-  end
+  s.add_runtime_dependency(%q<highline>, [">= 1.2.7"])
+  s.add_runtime_dependency(%q<nokogiri>, [">= 1.4"])
+  s.add_development_dependency(%q<rdoc>, ["~> 3.10"])
+  s.add_development_dependency(%q<hoe>, ["~> 2.13"])
 end
